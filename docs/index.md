@@ -1,9 +1,14 @@
 ---
-# sidebar: auto
+# index.md 声明
 # 是否为主页
 home: true
 # 主页大图logo地址
 heroImage: logo.png
+heroAlt: wetok-admin logo
+# heroText 默认是config的title
+# heroText: Interview
+# tagline 默认是config的description
+# tagline: the website of Interview with VitePress
 # 左边按钮 带有背景色
 actionText: 马上开始   ==>
 # 跳转地址

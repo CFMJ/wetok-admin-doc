@@ -7,7 +7,6 @@ export default defineConfig({
   description: 'WeTok Admin 开发文档', // 首页的描述
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' }],
-    ['link', { rel: 'stylesheet', href: '/style/index.css' }]
   ],
   outDir: '../public', // 指定 vitepress build 的输出目录
   // 这将在 HTML 页面中呈现为一个 <HTML lang="en-us"> 标记。
