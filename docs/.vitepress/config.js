@@ -19,15 +19,17 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    logo: '/logo.png',
     /* repo
        文档项目对应的GitHub用户名/GitHub项目名 用于配置导航栏 GitHub 的跳转
-       也是用来配置所有页面中底部导航的帮助我们编辑GitHub修改跳转功能的必须项 
+       也是用来配置所有页面中底部导航 /editLinkText/ 的帮助我们编辑GitHub修改跳转功能的必须项 
+       也可以改为其他git仓库,需输入完整地址
     */
-    repo: 'wushijiang13/wetok-admin-docs',
+    repo: 'http://gitlab.us168168.com/web_group/wetok-admin-doc',
     /* repoLabel
-       用于配置导航栏 GitHub 链接的名称，默认为 GitHub。
+       用于配置导航栏 Git仓库 链接的名称，默认为 GitHub。
     */
-    repoLabel: 'GitHub',
+    repoLabel: 'GitLab',
     /* 
     docsDir
     项目中放置文档文件夹的名称*/

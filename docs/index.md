@@ -3,7 +3,7 @@
 # 是否为主页
 home: true
 # 主页大图logo地址
-heroImage: logo.png
+heroImage: /logo.png
 heroAlt: wetok-admin logo
 # heroText 默认是config的title
 # heroText: Interview

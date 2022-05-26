@@ -95,8 +95,9 @@ console.log('你好,世界!')
 ```
 # 行内代码块
 ::: v-pre
-`console.log('你好,世界!')`
+someting...
 :::
+`带有灰色背景`
 ````
 
 #### 效果
@@ -105,9 +106,7 @@ console.log('你好,世界!')
 console.log('你好,世界!')
 ```
 
-::: v-pre
-`console.log('你好,世界!')`
-:::
+`带有灰色背景`
 
 ### 备注
 
@@ -130,7 +129,6 @@ console.log('你好,世界!')
 #### 语法
 
 ```
-<!--
 [百度](https://baidu.com)
 ![图片链接](https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png)
 ```

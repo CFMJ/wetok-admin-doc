@@ -12,7 +12,7 @@ const sidebar = [
         link: '/views/profiles.html'
       },
       {
-        text: '模板脚手架简介',
+        text: '配置简介',
         link: '/getting/template_introduction.html'
       }
     ]
