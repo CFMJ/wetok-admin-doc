@@ -2,13 +2,14 @@ import { defineConfig } from 'vitepress'
 import nav from './config/nav'
 import sidebar from './config/sidebar'
 export default defineConfig({
-  base: '/wetok-admin', // 网站基本路径
+  base: '/wetok-admin-doc/', // 网站基本路径
   title: 'WeTok Admin 中文文档', // 网站的标题。这将是所有页面标题的后缀，并显示在导航栏中
   description: 'WeTok Admin 开发文档', // 首页的描述
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' }],
     ['link', { rel: 'stylesheet', href: '/style/index.css' }]
   ],
+  dest: 'public', // 指定 vitepress build 的输出目录
   // 这将在 HTML 页面中呈现为一个 <HTML lang="en-us"> 标记。
   locales: {
     // '/en/': {

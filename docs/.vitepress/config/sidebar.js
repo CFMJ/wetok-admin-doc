@@ -24,7 +24,11 @@ const sidebar = [
   {
     text: 'markdown',
     link: '/views/markdown.html'
-  }
+  },
+  {
+    text: '相关链接',
+    link: '/views/docs.html'
+  },
 ]
 
 export default sidebar

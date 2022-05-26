@@ -15,7 +15,7 @@ git 规范参考下表
 |   feat   |                  新增特性                  |
 |   fix    |                  bug 修复                  |
 |   docs   |             文档/注释相关修改              |
-|  style   | 仅仅修改了代码格式,如格式缩进/添加封号等等 |
+|  style   | 仅仅修改了代码格式,如格式缩进/添加分号等等 |
 | refactor |                  代码重构                  |
 |  chore   |     杂项,如依赖更新/脚手架配置修改等等     |
 |   mod    |                不确定的更改                |
@@ -41,5 +41,5 @@ git 规范参考下表
 ```
 
 ::: tip 示例
-fix(use center): fix a bug
+fix(user center): fix a bug
 :::

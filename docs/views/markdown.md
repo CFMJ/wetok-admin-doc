@@ -4,7 +4,7 @@
 
 # markdown
 
-这里提供一些常用的 markdown/vp 语法,用来快速编写想要的文档页面
+这里提供一些常用的 markdown/vp 拓展的 markdown 语法,用来快速编写想要的文档页面
 
 ## 语法示例
 
@@ -46,9 +46,9 @@
 | :-----: | :----: |
 | WeChart | AliPay |
 
-### 提示框
+### 自定义容器
 
-提示框
+自定义容器
 
 #### 语法
 
@@ -62,6 +62,9 @@
 ::: danger 阅读提示
 阅读提示
 :::
+::: details 阅读提示
+这是一个详情块，在 IE / Edge 中不生效
+:::
 ```
 
 #### 效果
@@ -74,6 +77,9 @@
 :::
 ::: danger 阅读提示
 阅读提示
+:::
+::: details 阅读提示
+这是一个详情块，在 IE / Edge 中不生效
 :::
 
 ### 代码块
@@ -83,9 +89,14 @@
 #### 语法
 
 ````
+# 代码块
 ```js
 console.log('你好,世界!')
 ```
+# 行内代码块
+::: v-pre
+`console.log('你好,世界!')`
+:::
 ````
 
 #### 效果
@@ -93,6 +104,10 @@ console.log('你好,世界!')
 ```js
 console.log('你好,世界!')
 ```
+
+::: v-pre
+`console.log('你好,世界!')`
+:::
 
 ### 备注
 
@@ -115,6 +130,7 @@ console.log('你好,世界!')
 #### 语法
 
 ```
+<!--
 [百度](https://baidu.com)
 ![图片链接](https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png)
 ```
@@ -124,3 +140,46 @@ console.log('你好,世界!')
 [百度](https://baidu.com)
 
 ![图片链接](https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png)
+
+### 内部链接
+
+网站内部的链接，将会被转换成`<router-link>`用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为`/`。
+
+以如下的文件结构为例：
+
+#### 语法
+
+```
+.
+├─ README.md
+├─ foo
+│  ├─ README.md
+│  ├─ one.md
+│  └─ two.md
+└─ bar
+   ├─ README.md
+   ├─ three.md
+   └─ four.md
+```
+
+假设你现在在 foo/one.md 中：
+
+```markdown
+<!--
+页面内跳转 #代码块
+[Home](/) <!-- 跳转到根部的 README.md -->
+
+[foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
+[foo heading](./#heading) <!-- 跳转到 foo/index.html 的特定标题位置 -->
+[bar - three](../bar/three.md) <!-- 具体文件可以使用 .md 结尾（推荐） -->
+[bar - four](../bar/four.html) <!-- 也可以用 .html -->
+-->
+
+# 示例
+
+[跳转到代码块](#代码块)
+```
+
+#### 效果
+
+[跳转到代码块](#代码块)

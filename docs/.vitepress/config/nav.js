@@ -24,5 +24,5 @@ export default [
         link: 'https://baidu.com'
       },
     ]
-  }
+  },
 ]
