@@ -47,6 +47,8 @@ export default defineConfig({
     /* 
     右下角显示最近更新时间文案，并控制显示。 */
     lastUpdated: '最近更新',
+    // 启动页面丝滑滚动
+    smoothScroll: true,
     locales: {
       '/': {
         label: '中文',
