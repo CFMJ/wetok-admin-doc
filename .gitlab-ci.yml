@@ -10,6 +10,6 @@ pages:
     - npm run docs:build # yarn docs:build
   artifacts:
     paths:
-      - public
+      - ./doc/.vitepress/dist
   only:
     - master
