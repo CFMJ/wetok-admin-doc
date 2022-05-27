@@ -8,7 +8,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' }],
   ],
-  outDir: '../dist', // 指定 vitepress build 的输出目录
+  outDir: '../public', // 指定 vitepress build 的输出目录
   // 这将在 HTML 页面中呈现为一个 <HTML lang="en-us"> 标记。
   locales: {
     // '/en/': {
