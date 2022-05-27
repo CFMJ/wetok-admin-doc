@@ -4,9 +4,11 @@
 
 ## 文档自动部署
 
+详细介绍 doc 自动部署流程
+
 ### GitHub Pages and GitHub Actions
 
-关于 pages 的配置方法,参考 vitepress 官网[github-pages](https://vitepress.vuejs.org/guide/deploy.html#github-pages)
+关于 pages 的配置方法,参考 vitepress 官网 [github-pages](https://vitepress.vuejs.org/guide/deploy.html#github-pages).
 
 - 设置 Deploy Key 以及 Secrets
 
@@ -25,6 +27,8 @@ ssh-keygen -t rsa -C '邮箱地址'
 
 > 此处应有图片
 
+再添加一个 `GITHUB_TOKEN`,参考 [github token](https://github.blog/changelog/2021-07-26-expiration-options-for-personal-access-tokens/).
+
 - 新建 Action
 
 1. 设置正确的 `base` 选项。
@@ -35,8 +39,10 @@ ssh-keygen -t rsa -C '邮箱地址'
 
 2. 选择你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
 
-   创建 `.github/workflows/docs.yml` 文件来配置工作流。
-   这里参考 vuepress v2.00 的配置(https://v2.vuepress.vuejs.org/zh/guide/deployment.html#github-pages)
+   在你需要部署到 Github Page 的项目下，建立一个 `.yml` 文件，放在 `.github/workflow` 目录下。你可以命名为 `ci.yml`
+   这里参考 vuepress v2.00 的配置 [vuepress](https://v2.vuepress.vuejs.org/zh/guide/deployment.html#github-pages).
+
+`secrets.GITHUB_TOKEN` 是 `Secrets` 填入的 `GITHUB_TOKEN` 密钥.
 
 ```yml
 name: docs
@@ -92,8 +98,12 @@ jobs:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
           # 部署目录,默认输出目录为docs/.vitepress/dist
-          build_dir: docs/.vuepress/dist
+          build_dir: docs/.vitepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+每当 `git push`,github actions 会自动执行脚本,自动打包部署最新的代码.
+
+可以在 `Settings`的`Pages`选项中,查看文档链接地址
