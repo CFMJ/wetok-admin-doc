@@ -13,7 +13,7 @@ const sidebar = [
       },
       {
         text: '配置简介',
-        link: '/getting/template_introduction.html'
+        link: '/views/commitlint/rules.html'
       }
     ]
   },

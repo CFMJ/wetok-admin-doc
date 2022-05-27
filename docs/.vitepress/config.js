@@ -50,6 +50,8 @@ export default defineConfig({
     lastUpdated: '最近更新',
     // 启动页面丝滑滚动
     smoothScroll: true,
+    search: true,
+    searchMaxSuggestions: 10,
     locales: {
       '/': {
         label: '中文',
@@ -61,33 +63,6 @@ export default defineConfig({
         nav: nav,
         sidebar: sidebar
       },
-      // '/en/': {
-      //   label: 'English',
-      //   selectText: 'English',
-      //   nextLinks: true,
-      //   /* 
-      //     顶部右侧导航
-      //     text为标题 link为地址，可以填写本地相对路径也可以填写链接 */
-      //   nav: [
-      //     { text: '文档首页', link: '/' },
-      //     { text: '码云', link: 'https://gitee.com/wushijiang13/vue3-vite-cli' },
-      //   ],
-      //   sidebar: [
-      //     {
-      //       text: '入门',
-      //       children: [
-      //         {
-      //           text: '简介',
-      //           link: '/getting/why.html'
-      //         },
-      //         {
-      //           text: '模板脚手架简介',
-      //           link: '/getting/template_introduction.html'
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // }
     }
   }
 })
