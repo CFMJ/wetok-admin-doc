@@ -15,9 +15,10 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.GH_KEY }}
           TARGET_REPO: cfmj/wetok-admin-doc
-          TARGET_BRANCH: master
+          TARGET_BRANCH: gh-pages
           BUILD_SCRIPT: yarn && yarn docs:build
-          BUILD_DIR: docs/.vitepress/dist
+          # docs/.vitepress/dist
+          BUILD_DIR: publish
           # CNAME: https://www.xxx.com
 # name: Build and Deploy
 # on: # 监听 master 分支上的 push 事件
