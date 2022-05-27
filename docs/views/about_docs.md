@@ -1,6 +1,8 @@
 # 文档相关
 
-文档相关
+本文档基于 `vitepress` 构建.
+
+- [vitepress 官方文档](https://vitepress.vuejs.org/)
 
 ## 文档自动部署
 
@@ -31,7 +33,7 @@ ssh-keygen -t rsa -C '邮箱地址'
 
 - 新建 Action
 
-1. 设置正确的 `base` 选项。
+1. 在 doc 代码的 `docs/.vitepress/config.js` 中设置正确的 `base` 选项。
 
    如果你准备发布到 `https://<USERNAME>.github.io/` ，你可以省略这一步，因为 `base` 默认就是 `"/"` 。
 

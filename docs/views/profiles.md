@@ -9,7 +9,6 @@
 - [vue3 官方文档](https://v3.cn.vuejs.org/guide/introduction.html)
 - [Element Plus 官方文档](https://element-plus.gitee.io/zh-CN/component/button)
 - [vite 官方文档](https://vitejs.cn/)
-- [vitepress 官方文档](https://vitepress.vuejs.org/)
 
 ::: tip tips
 pnpm `>=7.0.0` node`>=16.15.0`
