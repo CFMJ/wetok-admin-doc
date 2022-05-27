@@ -1,50 +1,79 @@
-name: Build and Deploy
-on: [push]
+# name: Build and Deploy
+# on: [push]
+# jobs:
+#   # 任务名称
+#   build-and-deploy:
+#     # 执行的环境，默认是在最新版本的Ubuntu系统
+#     runs-on: ubuntu-latest
+#     # 执行的步骤
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@master
+
+#       - name: vuepress-deploy
+#         uses: jenkey2011/vuepress-deploy@master
+#         env:
+#           ACCESS_TOKEN: ${{ secrets.GH_KEY }}
+#           TARGET_REPO: cfmj/wetok-admin-doc
+#           TARGET_BRANCH: gh-pages
+#           BUILD_SCRIPT: yarn && yarn docs:build
+#           # docs/.vitepress/dist
+#           BUILD_DIR: public
+#           # CNAME: https://www.xxx.com
+name: docs
+
+on:
+  # 每当 push 到 master 分支时触发部署
+  push:
+    branches: [master]
+  # 手动触发部署
+  workflow_dispatch:
+
 jobs:
-  # 任务名称
-  build-and-deploy:
-    # 执行的环境，默认是在最新版本的Ubuntu系统
+  docs:
     runs-on: ubuntu-latest
     # 执行的步骤
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      - uses: actions/checkout@v2
+        with:
+          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
 
-      - name: vuepress-deploy
-        uses: jenkey2011/vuepress-deploy@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          # 选择要使用的 node 版本
+          node-version: '14'
+
+      # 缓存 node_modules
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # 如果缓存没有命中，安装依赖
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
+
+      # 运行构建脚本
+      - name: Build VuePress site
+        run: yarn docs:build
+
+      # 查看 workflow 的文档来获取更多信息
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录,默认输出目录为docs/.vitepress/dist
+          build_dir: public
         env:
-          ACCESS_TOKEN: ${{ secrets.GH_KEY }}
-          TARGET_REPO: cfmj/wetok-admin-doc
-          TARGET_BRANCH: gh-pages
-          BUILD_SCRIPT: yarn && yarn docs:build
-          # docs/.vitepress/dist
-          BUILD_DIR: public
-          # CNAME: https://www.xxx.com
-# name: Build and Deploy
-# on: # 监听 master 分支上的 push 事件
-#   push:
-#     branches:
-#       - master
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest # 构建环境使用 ubuntu
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2.3.1
-#         with:
-#           persist-credentials: false
-
-#       - name: Install and Build # 下载依赖 打包项目
-#         run: |
-#           npm install
-#           npm run build
-
-#       - name: Deploy # 将打包内容发布到 github page
-#         uses: JamesIves/github-pages-deploy-action@3.5.9 # 使用别人写好的 actions
-#         with: # 自定义环境变量
-#           ACCESS_TOKEN: ${{ secrets.GH_KEY }} # VUE_ADMIN_TEMPLATE 是我的 secret 名称，需要替换成你的
-#           BRANCH: master
-#           FOLDER: public
-#           REPOSITORY_NAME: cfmj/wetok-admin-doc # 这是我的 github page 仓库
-#           TARGET_FOLDER: github-actions-demo # 打包的文件将放到静态服务器 github-actions-demo 目录下
-
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GH_KEY }}

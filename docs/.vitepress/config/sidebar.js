@@ -14,6 +14,10 @@ const sidebar = [
       {
         text: '配置简介',
         link: '/views/commitlint/rules.html'
+      },
+      {
+        text: '文档相关',
+        link: '/views/about_docs.html'
       }
     ]
   },
@@ -27,7 +31,7 @@ const sidebar = [
   },
   {
     text: '相关链接',
-    link: '/views/docs.html'
+    link: '/views/links.html'
   },
 ]
 
