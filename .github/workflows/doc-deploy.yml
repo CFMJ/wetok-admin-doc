@@ -16,7 +16,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.GH_KEY }}
           TARGET_REPO: cfmj/wetok-admin-doc
           TARGET_BRANCH: master
-          BUILD_SCRIPT: yarn && yarn build:doc
+          BUILD_SCRIPT: yarn && yarn docs:build
           BUILD_DIR: public
           # CNAME: https://www.xxx.com
 # name: Build and Deploy
