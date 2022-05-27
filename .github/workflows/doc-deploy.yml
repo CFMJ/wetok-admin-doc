@@ -18,7 +18,7 @@ jobs:
           TARGET_BRANCH: gh-pages
           BUILD_SCRIPT: yarn && yarn docs:build
           # docs/.vitepress/dist
-          BUILD_DIR: publish
+          BUILD_DIR: public
           # CNAME: https://www.xxx.com
 # name: Build and Deploy
 # on: # 监听 master 分支上的 push 事件
