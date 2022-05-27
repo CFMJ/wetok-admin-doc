@@ -104,6 +104,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-每当 `git push`,github actions 会自动执行脚本,自动打包部署最新的代码.
+每当 `git push`,Github Actions 会自动执行脚本,自动打包部署最新的代码,发布到你的 Github Page 上.
 
 可以在 `Settings`的`Pages`选项中,查看文档链接地址
