@@ -6,13 +6,11 @@
 
 ## 文档自动部署
 
-详细介绍 doc 自动部署流程
+介绍 doc 配置 GitHub Pages 和 GitHub Actions 自动化部署,GitLab Pages 和 GitLab CI 自动化部署.
 
 ### GitHub Pages and GitHub Actions
 
-关于 pages 的配置方法,参考 vitepress 官网 [github-pages](https://vitepress.vuejs.org/guide/deploy.html#github-pages).
-
-- 设置 Deploy Key 以及 Secrets
+<!-- - 设置 Deploy Key 以及 Secrets
 
 自动部署需要将构建后的代码推送到代码仓库,所以需要 Git 的秘钥
 
@@ -27,11 +25,21 @@ ssh-keygen -t rsa -C '邮箱地址'
 
 再选择 `Secrets` 选项下的 `Actions`，新建私钥，将私钥内容填入:
 
-> 此处应有图片
+> 此处应有图片-->
 
-再添加一个 `GITHUB_TOKEN`,参考 [github token](https://github.blog/changelog/2021-07-26-expiration-options-for-personal-access-tokens/).
+- 创建 Actions Secrets
+
+创建一个 `personal access token`,参考 [github token](https://github.blog/changelog/2021-07-26-expiration-options-for-personal-access-tokens/).
+
+![New personal access token](https://github.com/cfmj/doc-images/blob/main/images/github-pages/token-create.gif?raw=true)
+
+生成后，打开 Git 项目的设置 `Settings`，选择 `Secrets` 选项下的 `Actions` 新建 Actions secrets，将生成的 token 内容填入:
+
+![create-actions-secrets](https://github.com/cfmj/doc-images/blob/main/images/github-pages/create-actions-secrets.png?raw=true)
 
 - 新建 Action
+
+  关于部署 pages 的配置方法,参考 vitepress 官网 [github-pages](https://vitepress.vuejs.org/guide/deploy.html#github-pages).
 
 1. 在 doc 代码的 `docs/.vitepress/config.js` 中设置正确的 `base` 选项。
 
@@ -39,12 +47,7 @@ ssh-keygen -t rsa -C '邮箱地址'
 
    如果你准备发布到 `https://<USERNAME>.github.io/<REPO>/` ，也就是说你的仓库地址是 `https://github.com/<USERNAME>/<REPO>` ，则将 `base` 设置为 `"/<REPO>/"`。
 
-2. 选择你想要使用的 CI 工具。这里我们以 [GitHub Actions](https://github.com/features/actions) 为例。
-
-   在你需要部署到 Github Page 的项目下，建立一个 `.yml` 文件，放在 `.github/workflow` 目录下。你可以命名为 `ci.yml`
-   这里参考 vuepress v2.00 的配置 [vuepress](https://v2.vuepress.vuejs.org/zh/guide/deployment.html#github-pages).
-
-`secrets.GITHUB_TOKEN` 是 `Secrets` 填入的 `GITHUB_TOKEN` 密钥.
+2. 在项目根目录下的 `.github/workflows` 目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如: `vuepress-deploy.yml` ,参考[vuepress](https://v2.vuepress.vuejs.org/zh/guide/deployment.html#github-pages) 和 [GitHub Actions](https://github.com/features/actions).
 
 ```yml
 name: docs
@@ -99,13 +102,49 @@ jobs:
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
-          # 部署目录,默认输出目录为docs/.vitepress/dist
+          # 打包目录,默认目录为docs/.vitepress/dist
           build_dir: docs/.vitepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-每当 `git push`,Github Actions 会自动执行脚本,自动打包部署最新的代码,发布到你的 Github Page 上.
+> `secrets.GITHUB_TOKEN` 是 上一步创建的 `Actions Secrets` 密钥.
 
-可以在 `Settings`的`Pages`选项中,查看文档链接地址
+每当 `git push`成功时,Github Actions 会自动执行脚本,自动打包部署最新的代码,发布到你的 Github Page 上.
+
+可以在 `Settings`的`Pages`选项中,查看文档链接地址.
+
+### GitLab Pages and GitLab CI
+
+1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
+
+如果你打算发布到 `https://<USERNAME or GROUP>.gitlab.io/`，则可以省略这一步，因为 `base` 默认即是 `"/"`。
+
+如果你打算发布到 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`（也就是说你的仓库在 `https://gitlab.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
+
+2. 在 `.vuepress/config.js `中将 `dest` 设置为 `public`。
+
+3. 在你项目的根目录下创建一个名为 `.gitlab-ci.yml` 的文件，无论何时你提交了更改，它都会帮助你自动构建和部署：
+
+```yml
+image: node:16.5.0
+pages:
+  stage: deploy
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - yarn install # npm install
+    - yarn docs:build # npm run docs:build
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+```
+
+参考 [vitepress gitlab-pages](http://localhost:3000/wetok-admin-doc/views/about_docs.html#gitlab-pages-and-gitlab-ci) ,同样每当 `git push`成功时,GitLab CI 会自动执行脚本,自动打包部署最新的代码,发布到你的 GitLab Page 上.
+
+可以在 `Settings`的`Pages`选项中,查看文档链接地址.
