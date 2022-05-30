@@ -145,6 +145,6 @@ pages:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 ```
 
-参考 [vitepress gitlab-pages](http://localhost:3000/wetok-admin-doc/views/about_docs.html#gitlab-pages-and-gitlab-ci) ,同样每当 `git push`成功时,GitLab CI 会自动执行脚本,自动打包部署最新的代码,发布到你的 GitLab Page 上.
+参考 [vitepress gitlab-pages](https://vitepress.vuejs.org/guide/deploy.html#gitlab-pages-and-gitlab-ci) ,同样每当 `git push`成功时,GitLab CI 会自动执行脚本,自动打包部署最新的代码,发布到你的 GitLab Page 上.
 
 可以在 `Settings`的`Pages`选项中,查看文档链接地址.
