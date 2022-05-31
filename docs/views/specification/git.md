@@ -1,28 +1,8 @@
-# 规范
+# git 规范
 
-包括代码规范和 git 规范
+git 规范
 
-## 代码规范
-
-## git 规范
-
-### commit 格式参考
-
-git 规范参考下表
-
-|   类型   |                    描述                    |
-| :------: | :----------------------------------------: |
-|   feat   |                  新增特性                  |
-|   fix    |                  bug 修复                  |
-|   docs   |             文档/注释相关修改              |
-|  style   | 仅仅修改了代码格式,如格式缩进/添加分号等等 |
-| refactor |                  代码重构                  |
-|  chore   |     杂项,如依赖更新/脚手架配置修改等等     |
-|   mod    |              不确定分类的更改              |
-|   perf   |         优化相关,比如提升性能/体验         |
-|  revert  |                  代码回滚                  |
-|  types   |                  类型修改                  |
-|   wip    |                   开发中                   |
+## git 提交规范
 
 ### commit 格式
 
@@ -43,6 +23,24 @@ git 规范参考下表
 ::: tip 示例
 fix(user center): fix a bug
 :::
+
+### commit type 参考
+
+git 规范参考下表
+
+|   类型   |                    描述                    |
+| :------: | :----------------------------------------: |
+|   feat   |                  新增特性                  |
+|   fix    |                  bug 修复                  |
+|   docs   |             文档/注释相关修改              |
+|  style   | 仅仅修改了代码格式,如格式缩进/添加分号等等 |
+| refactor |                  代码重构                  |
+|  chore   |     杂项,如依赖更新/脚手架配置修改等等     |
+|   mod    |              不确定分类的更改              |
+|   perf   |         优化相关,比如提升性能/体验         |
+|  revert  |                  代码回滚                  |
+|  types   |                  类型修改                  |
+|   wip    |                   开发中                   |
 
 ### git 常见问题解决方法
 
@@ -126,4 +124,65 @@ git commit --amend -m "修改后的msg"
 ```shell
 # 如果git merge 分支之后有冲突，想先撤回这次merge
 git merge --abort
+```
+
+## git 规范工具
+
+使用 `husky + commitlint` 规范 commit 提交的信息
+
+- husky：为 git 提供生命周期 hook，如我们可以在提交代码前做一些校验工作
+- commitlint: commit 信息校验工具
+
+### husky
+
+1. 安装 husky
+
+```bash
+npm install husky --save-dev
+```
+
+2. 配置
+
+package.json 配置 prepare 命令
+
+prepare 脚本会在执行 npm install 之后自动执行。也就是说当我们执行 npm install 安装完项目依赖后会执行 husky install 命令。
+
+```json
+"scripts": {
+      "prepare": "husky install"
+  }
+```
+
+```bash
+# 初始化husky,将 git hooks 钩子交由,husky执行
+npm run prepare
+```
+
+3. 添加 git hooks
+
+创建一条 pre-commit hook
+
+```bash
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+执行该命令后，会看到.husky/目录下新增了一个名为 pre-commit 的 shell 脚本。
+
+这样，在之后执行 git commit 命令时会先触发 pre-commit 这个脚本。
+
+pre-commit 脚本内容如下：
+
+```shell
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+# 注意：npm run lint 命令根据你自己项目中script脚本而定，eslint --ext .js,.vue src在lint脚本中
+npm run lint
+```
+
+4. 规范 commit message 信息
+
+类似的，我们也可以添加 commit-msg 钩子，来规范我们的 commit message 信息
+
+```shell
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```

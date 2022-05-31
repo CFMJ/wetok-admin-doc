@@ -12,18 +12,27 @@ const sidebar = [
         link: '/views/profiles.html'
       },
       {
-        text: '配置简介',
-        link: '/views/commitlint/rules.html'
+        text: '目录结构',
+        link: '/views/catalogs.html'
       },
       {
-        text: '文档相关',
+        text: '关于文档',
         link: '/views/about_docs.html'
       }
     ]
   },
   {
     text: '规范',
-    link: '/views/specification.html'
+    children: [
+      {
+        text: '代码规范',
+        link: '/views/specification/specification.html'
+      },
+      {
+        text: 'git 规范',
+        link: '/views/specification/git.html'
+      },
+    ]
   },
   {
     text: 'markdown',

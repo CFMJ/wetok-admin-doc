@@ -26,6 +26,10 @@ vue3 不在支持 IE 浏览器 Modern browsers and Internet Explorer 11+.
 
 ## 开发环境
 
+开发需要最基本的环境
+
+### 开发环境
+
 - [Git](https://git-scm.com/)
 - [Nodej.s](https://nodejs.org/zh-cn/)
 - [pnpm](https://pnpm.io/zh/)
@@ -34,8 +38,10 @@ vue3 不在支持 IE 浏览器 Modern browsers and Internet Explorer 11+.
 ::: warning 注意
 Node.js 版本建议为 16.15.0
 
-为保证代码风格一致，统一使用 Visual Studio Code 做为开发 IDE.
+为保证代码风格一致，统一使用 [Visual Studio Code](https://code.visualstudio.com/) 做为开发 IDE.
 :::
+
+### VS Code 插件
 
 在 VS Code 里安装好以下扩展：
 
@@ -51,7 +57,11 @@ Node.js 版本建议为 16.15.0
 
 ![格式化文件](https://github.com/cfmj/doc-images/blob/main/images/format.png?raw=true)
 
-## 安装
+### Chrome 插件
+
+在 Chrome 里安装好 Vue 调试工具 [Vue.js devtools](https://devtools.vuejs.org/).
+
+## 安装依赖
 
 ```bash
 # pnpm address https://pnpm.io/zh/motivation
