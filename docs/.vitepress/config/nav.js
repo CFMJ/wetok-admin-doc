@@ -1,8 +1,8 @@
 export default [
-  { text: `文档`, link: `/` },
+  { text: `首页`, link: `/` },
   {
-    text: `更新日志`,
-    link: `/views/profiles`
+    text: `文档链接`,
+    link: `/views/links/docs.html`
   },
   {
     text: '项目链接',

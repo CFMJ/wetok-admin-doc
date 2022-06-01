@@ -36,6 +36,10 @@ const sidebar = [
     ]
   },
   {
+    text: "组件",
+    link: '/views/components/'
+  },
+  {
     text: 'markdown',
     link: '/views/markdown.html'
   },

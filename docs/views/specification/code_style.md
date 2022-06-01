@@ -20,7 +20,7 @@
 
 ```
 
-配置 ESLint 配置文件 `.eslintrc.js`,参考 [ESLint Rules](https://eslint.bootcss.com/docs/rules/).
+配置 ESLint 配置文件 `.eslintrc.js`,参考 [ESLint Rules](https://eslint.bootcss.com/docs/rules/) 和 [掘金](https://juejin.cn/post/6974223481181306888#heading-2).
 
 ```js
 module.exports = {
