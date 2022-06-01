@@ -1,6 +1,6 @@
 # git 规范
 
-git 规范
+在团队多人开发中，规范的 commit message 可以快速定位代码提交历史，回溯问题根源，方便组内多人协作，提高团队效率。
 
 ## git 提交规范
 
@@ -230,7 +230,7 @@ npm i lint-staged -D
 
 ```json
 {
-  "src/**/*.{js,jsx,ts,tsx,md,html}": ["eslint --fix", "prettier --write"],
+  "src/**/*.{js,jsx,ts,tsx,md,html}": ["eslint --fix"],
   // 如果配置了stylelint
   "src/**/*.{html,vue,css,scss,sass,less}": ["stylelint --fix"]
 }
@@ -243,7 +243,9 @@ npm i lint-staged -D
 ```js
 'use strict'
 module.exports = {
-  'src/**/*.{js,ts,vue}': ['eslint --fix'],
+  'src/**/*.{js,jsx,ts,tsx,md,html}': ['eslint --fix'],
+  // 如果配置了stylelint
+  'src/**/*.{html,vue,css,scss,sass,less}': ['stylelint --fix'],
 }
 ```
 
@@ -252,7 +254,7 @@ module.exports = {
 
 ```json
 {
-  "src/**/*.{js,jsx,ts,tsx,md,html}": ["eslint --fix", "prettier --write"],
+  "src/**/*.{js,jsx,ts,tsx,vue,md,html}": ["eslint --fix", "prettier --write"],
   // 如果配置了stylelint
   "src/**/*.{html,vue,css,scss,sass,less}": ["prettier --write"]
 }

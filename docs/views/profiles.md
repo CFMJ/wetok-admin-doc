@@ -49,13 +49,7 @@ Node.js 版本建议为 16.15.0
 - [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=vue.volar)
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-配置 Prettier 为编辑器默认格式化程序
-
-![默认格式化程序](https://github.com/cfmj/doc-images/blob/main/images/default-format.png?raw=true)
-
-再 VS Code 设置中配置保存时格式化文件
-
-![格式化文件](https://github.com/cfmj/doc-images/blob/main/images/format.png?raw=true)
+配置 Prettier 为编辑器默认格式化程序,详见 [Prettier 配置](./specification/code_style.html#prettier).
 
 ### Chrome 插件
 
