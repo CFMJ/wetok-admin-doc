@@ -228,29 +228,45 @@ npm i lint-staged -D
 
 根目录下创建 `.lintstagedrc` 文件,并写入
 
-```js
+```json
 {
-  "src/**/\*.{js,jsx,ts,tsx,md,html}": ["eslint", "prettier --write"],
+  "src/**/*.{js,jsx,ts,tsx,md,html}": ["eslint --fix", "prettier --write"],
   // 如果配置了stylelint
-  "src/**/\*.{html,vue,css,scss,sass,less}": ["stylelint --fix"]
+  "src/**/*.{html,vue,css,scss,sass,less}": ["stylelint --fix"]
 }
 ```
 
-在 `package.json` 中添加脚本
+或者
+
+创建 `lint-staged.config.js` 文件,并写入
+
+```js
+'use strict'
+module.exports = {
+  'src/**/*.{js,ts,vue}': ['eslint --fix'],
+}
+```
+
+::: tip
+如果需要 prettier 格式化代码,可以在规则中加入 `prettier --write`
 
 ```json
-"scripts": {
-    "precommit": "lint-staged"
-  }
+{
+  "src/**/*.{js,jsx,ts,tsx,md,html}": ["eslint --fix", "prettier --write"],
+  // 如果配置了stylelint
+  "src/**/*.{html,vue,css,scss,sass,less}": ["prettier --write"]
+}
 ```
 
-husky 添加 pre-commit 钩子,可以在命令行运行
+:::
+
+在 husky 中添加 pre-commit 钩子,可以在命令行运行
 
 ```bash
-npx husky add .husky/pre-commit "npm run precommit"
+npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
-或者手动在 `.husky/pre-commit` 文件里添加 `npm run precommit`.
+或者手动在 `.husky/pre-commit` 文件里添加 `npx lint-staged`.
 
 3. 使用
 
@@ -268,6 +284,10 @@ npm i @commitlint/cli @commitlint/config-conventional -D
 # 配置 commitlint.config.js
 echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
 ```
+
+- `@commitlint/cli` 是 commitlint 提供的命令行工具，安装后会将 cli 脚本放置在./node_modules/.bin/目录下
+
+- `@commitlint/config-conventional` 是社区中一些共享的配置，我们可以扩展这些配置，也可以不安装这个包自定义配置
 
 ::: warning
 使用 commitlint 时报错：commitlint.config.js:1 SyntaxError: Invalid or unexpected token
