@@ -201,9 +201,26 @@ npm run lint
 
 类似的，我们也可以添加 commit-msg 钩子，来规范我们的 commit message 信息
 
-```shell
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+```bash
+npx husky add .husky/pre-commit "npm run lint"
 ```
+
+::: tip
+
+```bash
+# 在低版本node中运行
+npx husky add .husky/pre-commit "npm run lint"
+# 可能会报
+Usage:
+  husky install [dir] (default: .husky)
+  husky uninstall
+  husky set|add <file> [cmd]
+#可以改为
+npx husky add .husky/pre-commit "npm-run-lint"
+```
+
+或者 升级 node >= 16.15.0
+:::
 
 ### lint-staged
 
