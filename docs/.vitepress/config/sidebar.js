@@ -23,10 +23,11 @@ const sidebar = [
   },
   {
     text: '规范',
+    link: '/views/specification/specification.html',
     children: [
       {
         text: '代码规范',
-        link: '/views/specification/specification.html'
+        link: '/views/specification/code_style.html'
       },
       {
         text: 'git 规范',

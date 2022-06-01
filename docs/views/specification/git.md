@@ -21,7 +21,13 @@ git 规范
 ```
 
 ::: tip 示例
+
+```bash
+<type>(scope?): <subject>
+
 fix(user center): fix a bug
+```
+
 :::
 
 ### commit type 参考
@@ -131,7 +137,7 @@ git merge --abort
 使用 `husky + commitlint` 规范 commit 提交的信息
 
 - [husky](https://github.com/typicode/husky#readme)：为 git 提供生命周期 hook，如我们可以在提交代码前做一些校验工作
-- commitlint: commit 信息校验工具
+- [commitlint](https://commitlint.js.org/#/): commit 信息校验工具
 
 ### husky
 
@@ -179,7 +185,7 @@ npx husky add .husky/pre-commit "npm run lint"
 
 pre-commit 脚本内容如下：
 
-```shell
+```bash
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 # 注意：npm run lint 命令根据你自己项目中script脚本而定，eslint --ext .js,.vue src在lint脚本中
@@ -221,7 +227,7 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commit
 
 2. 可配置的 rules
 
-::: details 展开查看可配置的 commitlint rules
+::: details 展开查看 commitlint.config.js 可配置的 rules
 
 规则由名称和配置数组组成,配置数组包含:
 
@@ -263,7 +269,7 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commit
   }
 ```
 
-### 可用规则
+#### 可用规则
 
 ---
 

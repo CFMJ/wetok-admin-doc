@@ -1,5 +1,28 @@
-# 代码规范
+# 规范
 
-这里介绍代码风格与流程规范
+在团队多人开发中，规范的 commit message 可以快速定位代码提交历史，回溯问题根源，方便组内多人协作，提高团队效率。
 
-## 代码规范
+目前前端主要使用到的规范技术有:
+
+```
+- [Eslint](https://cn.eslint.org/docs/user-guide/command-line-interface#options)        代码检查工具
+- Prettier      代码风格工具
+- husky         操作 git 钩子的工具
+- lint-staged   能够让lint只检测暂存区的文件
+- commitlint    commit 校验工具
+- commitizen    辅助提交工具
+```
+
+### commitizen
+
+考虑后不使用 commitizen , commitizen 如果全局安装可以使用 `git cz` 命令代替 `git commit`,在当前项目安装则可以在 `pagkage.json` 添加脚本
+
+```json
+ "scripts": {
+    "commit": "git-cz",
+  }
+```
+
+然后使用 `npm run commit` 命令代替 `git commit`.
+
+考虑 `git commit` 使用习惯,只要 git commit 钩子里做好 commitlint 效验,commitizen 不是必要的.
