@@ -137,6 +137,7 @@ git merge --abort
 使用 `husky + commitlint` 规范 commit 提交的信息
 
 - [husky](https://github.com/typicode/husky#readme)：为 git 提供生命周期 hook，如我们可以在提交代码前做一些校验工作
+- [lint-staged] 能够让 lint 只检测暂存区的文件
 - [commitlint](https://commitlint.js.org/#/): commit 信息校验工具
 
 ### husky
@@ -203,6 +204,57 @@ npm run lint
 ```shell
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
+
+### lint-staged
+
+使用 husky 配置 git hooks，在 git commit 前执行 eslint，好像已经很好的解决了代码的检测需求。
+
+实际使用过程中遇到了以下两个问题：
+
+1. 如果在历史代码库检测,可能出现几百几千的报错,将会难以更改
+
+2. 全量检测整个项目，随着代码量的增加,将会非常耗时
+
+全量检测整个仓库，可能不是一个最现实、最高效的方法。因此我们期望每次提交只检查本次提交所修改的文件就够了
+使用 lint-staged 能够让 eslint 只检测暂存区的文件
+
+1. 安装
+
+```bash
+npm i lint-staged -D
+```
+
+2. 配置
+
+根目录下创建 `.lintstagedrc` 文件,并写入
+
+```js
+{
+  "src/**/\*.{js,jsx,ts,tsx,md,html}": ["eslint", "prettier --write"],
+  // 如果配置了stylelint
+  "src/**/\*.{html,vue,css,scss,sass,less}": ["stylelint --fix"]
+}
+```
+
+在 `package.json` 中添加脚本
+
+```json
+"scripts": {
+    "precommit": "lint-staged"
+  }
+```
+
+husky 添加 pre-commit 钩子,可以在命令行运行
+
+```bash
+npx husky add .husky/pre-commit "npm run precommit"
+```
+
+或者手动在 `.husky/pre-commit` 文件里添加 `npm run precommit`.
+
+3. 使用
+
+执行 `git add .` 然后 `git commit` 的时候，就会触发 lint-stage,通过 eslint 来执行本次提交所修改的文件,如果检测不通过(以非 0 退出时),就会中断此次提交.
 
 ### commitlint
 

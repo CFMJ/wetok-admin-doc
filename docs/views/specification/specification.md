@@ -4,14 +4,24 @@
 
 目前前端主要使用到的规范技术有:
 
-```
-- [Eslint](https://cn.eslint.org/docs/user-guide/command-line-interface#options)        代码检查工具
-- Prettier      代码风格工具
-- husky         操作 git 钩子的工具
-- lint-staged   能够让lint只检测暂存区的文件
-- commitlint    commit 校验工具
-- commitizen    辅助提交工具
-```
+- [Eslint](https://cn.eslint.org/docs/user-guide/command-line-interface#options) 代码检查工具
+- Prettier 代码风格工具
+- [husky](https://github.com/typicode/husky#readme) 操作 git 钩子的工具
+- lint-staged 能够让 lint 只检测暂存区的文件
+- [commitlint](https://commitlint.js.org/#/) commit 校验工具
+- commitizen 辅助提交工具
+
+### husky
+
+详情见 [husky](./git.html#husky)
+
+### lint-staged
+
+详情见 [lint-staged](./git.html#lint-staged)
+
+### commitlint
+
+详情见 [commitlint](./git.html#commitlint)
 
 ### commitizen
 
