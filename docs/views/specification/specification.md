@@ -11,6 +11,10 @@
 - [commitlint](https://commitlint.js.org/#/) commit 校验工具
 - commitizen 辅助提交工具
 
+参考
+
+- [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
+
 ### ESLint
 
 详情见 [ESLint](./code_style.html#ESLint).
