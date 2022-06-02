@@ -7,13 +7,13 @@
 ### commit 格式
 
 ```
-<type>[optional scope][breaking change add !]: <description>
+<type>[optional scope][optional !]: <subject>
 
 [optional body]
 
 [optional footer(s)]
 
-<类型>[可选 范围][破坏性更新加上 !]: <描述>
+<类型>[可选 范围][可选 破坏性更新加上 !]: <描述>
 
 [可选 正文]
 
@@ -25,7 +25,7 @@
 ```bash
 <type>(scope?): <subject>
 
-fix(user center): fix a bug
+fix(myblog): fix a bug
 ```
 
 :::
