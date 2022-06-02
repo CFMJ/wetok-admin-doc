@@ -47,4 +47,4 @@
 
 然后使用 `npm run commit` 命令代替 `git commit`.
 
-考虑 `git commit` 使用习惯,只要 git commit 钩子里做好 commitlint 效验,commitizen 不是必要的.
+考虑 `git commit` 使用习惯,只要 git commit 钩子里做好 commitlint 校验,commitizen 不是必要的.
