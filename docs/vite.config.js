@@ -9,6 +9,6 @@ export default defineConfig({
   ssr: {
     // 解决：SyntaxError: Cannot use import statement outside a module
     // https://github.com/vuejs/vitepress/issues/476
-    noExternal: ['element-plus/lib/locale/lang/zh-cn', 'element-plus/dist/index.css'],
+    noExternal: ['element-plus/lib/locale/lang/zh-cn'],
   },
 })
