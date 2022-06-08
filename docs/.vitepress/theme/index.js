@@ -7,12 +7,11 @@ import './custom.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css' // 暗黑模式
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
-
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default {
   ...DefaultTheme,
-  enhanceApp ({ app }) {
+  enhanceApp({ app }) {
     app.use(ElementPlus, { locale: zhCn })
   },
 }
