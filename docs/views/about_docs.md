@@ -49,7 +49,7 @@ ssh-keygen -t rsa -C '邮箱地址'
 
 2. 在项目根目录下的 `.github/workflows` 目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如: `vuepress-deploy.yml` ,参考[vuepress](https://v2.vuepress.vuejs.org/zh/guide/deployment.html#github-pages) 和 [GitHub Actions](https://github.com/features/actions).
 
-```
+```yaml
 name: docs
 
 on:
@@ -128,7 +128,7 @@ jobs:
 
 3. 在你项目的根目录下创建一个名为 `.gitlab-ci.yml` 的文件，无论何时你提交了更改，它都会帮助你自动构建和部署：
 
-```
+```yaml
 image: node:16.5.0
 pages:
   stage: deploy
