@@ -6,7 +6,7 @@
 const sidebar = [
   {
     text: '开始',
-    children: [
+    items: [
       {
         text: '简介',
         link: '/views/profiles.html'
@@ -23,8 +23,11 @@ const sidebar = [
   },
   {
     text: '规范',
-    link: '/views/specification/specification.html',
-    children: [
+    items: [
+      {
+        text: '规范',
+        link: '/views/specification/specification.html',
+      },
       {
         text: '代码规范',
         link: '/views/specification/code_style.html'
@@ -36,16 +39,32 @@ const sidebar = [
     ]
   },
   {
-    text: "组件",
-    link: '/views/components/'
+    text: "相关链接",
+    link: '/views/links.html',
+    items: [
+      {
+        text: '相关链接',
+        link: '/views/links.html',
+      },
+    ]
   },
   {
     text: 'markdown',
-    link: '/views/markdown.html'
+    items: [
+      {
+        text: 'markdown',
+        link: '/views/markdown.html',
+      },
+    ]
   },
   {
     text: '相关链接',
-    link: '/views/links.html'
+    items: [
+      {
+        text: '相关链接',
+        link: '/views/links.html',
+      },
+    ]
   },
 ]
 

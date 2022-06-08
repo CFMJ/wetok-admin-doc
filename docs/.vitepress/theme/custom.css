@@ -1,4 +1,9 @@
 :root {
-  --c-brand: #646cff;
-  --c-brand-light: #747bff;
+  --vp-c-brand: #646cff;
+  --vp-c-brand-light: #747bff;
+  --vp-c-brand-dark: #3d44cf;
+  --vp-c-brand-darker: #2830cc;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
 }
