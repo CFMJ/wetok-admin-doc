@@ -39,12 +39,11 @@ const sidebar = [
     ]
   },
   {
-    text: "相关链接",
-    link: '/views/links.html',
+    text: "组件",
     items: [
       {
-        text: '相关链接',
-        link: '/views/links.html',
+        text: '组件',
+        link: '/views/components/',
       },
     ]
   },
