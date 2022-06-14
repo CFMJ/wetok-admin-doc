@@ -2,7 +2,12 @@
 # index.md 声明
 # 是否为主页
 layout: home
+sidebar: auto
 
+head:
+  - - meta
+    - name: description
+      content: wetok-admin-doc
 # Hero Section
 hero:
   name: Wetok-Admin
@@ -11,10 +16,10 @@ hero:
   actions:
     - theme: brand
       text: 马上开始   ==>
-      link: /wetok-admin-doc/views/profiles.html
+      link: /views/profiles.html
     - theme: alt
       text: 简介
-      link: /wetok-admin-doc/views/profiles.html
+      link: /views/profiles.html
 
 # 特性分栏
 features:

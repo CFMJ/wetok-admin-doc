@@ -29,12 +29,13 @@ export default defineConfig({
     docsBranch 废弃
     项目在GitHub仓库的分支，也是用来配置所有页面中底部导航的帮助我们编辑GitHub修改跳转功能的必须项 */
     // docsBranch: 'master',
+    outlineTitle: '在本页面',
     /* 
     editLink
     编辑链接可让您显示链接以编辑 Git 管理服务（例如 GitHub 或 GitLab）上的页面。*/
     editLink: {
-      pattern: 'http://gitlab.us168168.com/web_group/wetok-admin-doc/',
-      text: '欢迎帮助我们改善页面!(编辑页面有bug 等待vitepress更新)',
+      pattern: 'http://gitlab.us168168.com/web_group/wetok-admin-doc/-/edit/master/docs/:path',
+      text: '欢迎帮助改善文档!',
     },
     /* 
     右下角显示最近更新时间文案。 */
@@ -54,18 +55,20 @@ export default defineConfig({
     smoothScroll: true,
     search: true,
     searchMaxSuggestions: 10,
-    locales: {
-      '/': {
-        label: '中文',
-        selectText: '中文',
-        nextLinks: true,
-        /* 
-          顶部右侧导航
-          text为标题 link为地址，可以填写本地相对路径也可以填写链接 */
-        nav: nav,
-        sidebar: sidebar,
-      },
-    },
+    sidebar: sidebar,
+    nav: nav,
+    // locales: {
+    //   '/': {
+    //     label: '中文',
+    //     selectText: '中文',
+    //     nextLinks: true,
+    //     /*
+    //       顶部右侧导航
+    //       text为标题 link为地址，可以填写本地相对路径也可以填写链接 */
+    //     nav: nav,
+    //     sidebar: sidebar,
+    //   },
+    // },
     algolia: {
       appId: '176Y9V7LED',
       apiKey: '925411d8d3d357516c0e3a3aa2c4f292',
