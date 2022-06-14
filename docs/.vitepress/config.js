@@ -8,9 +8,7 @@ export default defineConfig({
   description: 'WeTok Admin 开发文档', // 首页的描述
   // appearance: true,
   lastUpdated: true,
-  head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' }],
-  ],
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.png' }]],
   outDir: '../public', // 指定 vitepress build 的输出目录 默认docs/.vitepress/dist
   // 这将在 HTML 页面中呈现为一个 <HTML lang="en-us"> 标记。
   locales: {
@@ -18,8 +16,8 @@ export default defineConfig({
     //   lang: 'en-US'
     // },
     '/': {
-      lang: 'zh-CN'
-    }
+      lang: 'zh-CN',
+    },
   },
   themeConfig: {
     logo: '/logo.png',
@@ -36,7 +34,7 @@ export default defineConfig({
     编辑链接可让您显示链接以编辑 Git 管理服务（例如 GitHub 或 GitLab）上的页面。*/
     editLink: {
       pattern: 'http://gitlab.us168168.com/web_group/wetok-admin-doc/',
-      text: '欢迎帮助我们改善页面!(编辑页面有bug 等待vitepress更新)'
+      text: '欢迎帮助我们改善页面!(编辑页面有bug 等待vitepress更新)',
     },
     /* 
     右下角显示最近更新时间文案。 */
@@ -44,13 +42,13 @@ export default defineConfig({
     // 底部描述
     footer: {
       message: 'MIT Licensed',
-      copyright: 'Copyright © 2022-present cfmj'
+      copyright: 'Copyright © 2022-present cfmj',
     },
     // 社交链接
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
       { icon: 'twitter', link: '...' },
-      { icon: 'slack', link: '...' }
+      { icon: 'slack', link: '...' },
     ],
     // 启动页面丝滑滚动
     smoothScroll: true,
@@ -65,8 +63,13 @@ export default defineConfig({
           顶部右侧导航
           text为标题 link为地址，可以填写本地相对路径也可以填写链接 */
         nav: nav,
-        sidebar: sidebar
+        sidebar: sidebar,
       },
-    }
-  }
+    },
+    algolia: {
+      appId: '176Y9V7LED',
+      apiKey: '925411d8d3d357516c0e3a3aa2c4f292',
+      indexName: 'wetok-admin',
+    },
+  },
 })
