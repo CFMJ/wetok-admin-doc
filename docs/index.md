@@ -1,6 +1,6 @@
 ---
 # index.md 声明
-# 是否为主页
+# 是否为主页1
 layout: home
 sidebar: auto
 
